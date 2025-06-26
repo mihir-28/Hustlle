@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --color-gray: #BEBEBE;
+  --color-white: #FFFFFF;
+  --color-dark: #141517;
+  --color-light: #F2F4F7;
+  --color-accent: #FF4F18;
+}
+
+:root[data-theme="dark"] {
+  --color-gray: #8A8A8A;
+  --color-white: #1E1E1E;
+  --color-dark: #F2F4F7;
+  --color-light: #141517;
+  --color-accent: #FF6B3C;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-gray: #8A8A8A;
+    --color-white: #1E1E1E;
+    --color-dark: #F2F4F7;
+    --color-light: #141517;
+    --color-accent: #FF6B3C;
+  }
+}
+
+body {
+  font-family: 'Nohemi', sans-serif;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('./assets/fonts/Nohemi-VF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Base responsive styles */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Transition classes for animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.theme-transition {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
