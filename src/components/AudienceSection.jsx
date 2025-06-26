@@ -7,33 +7,28 @@ const AudienceSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
+        staggerChildren: 0.08
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.5
       }
     }
   };
 
   const iconVariants = {
-    hidden: { scale: 0, rotate: -45 },
+    hidden: { opacity: 0, scale: 0.8 },
     visible: {
+      opacity: 1,
       scale: 1,
-      rotate: 0,
       transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
+        duration: 0.3,
         delay: 0.1
       }
     }
@@ -44,9 +39,9 @@ const AudienceSection = () => {
       <div className="container mx-auto max-w-6xl">
         <motion.h2 
           className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-16 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
           Who We Serve
@@ -57,7 +52,7 @@ const AudienceSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {[
             {
@@ -81,7 +76,7 @@ const AudienceSection = () => {
               key={index} 
               className="bg-[var(--color-white)] p-5 sm:p-6 rounded-xl text-center hover:shadow-md transition-all"
               variants={itemVariants}
-              whileHover={{ y: -5 }}
+              whileHover={{ translateY: -3 }}
             >
               <motion.div 
                 className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--color-accent)] mx-auto mb-3 sm:mb-4 flex items-center justify-center"

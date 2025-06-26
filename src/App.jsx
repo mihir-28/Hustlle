@@ -17,7 +17,7 @@ function App() {
       
       <footer className="p-4 bg-[var(--color-dark)] text-[var(--color-white)]">
         <div className="container mx-auto">
-          <p className="text-center">© 2023 Hustlle. All rights reserved.</p>
+          <p className="text-center">© 2025 Hustlle. All Rights Reserved.</p>
         </div>
       </footer>
     </div>

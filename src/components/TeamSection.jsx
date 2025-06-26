@@ -7,39 +7,34 @@ const TeamSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
+        staggerChildren: 0.06
       }
     }
   };
 
   const memberVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.4
       }
     }
   };
 
   const avatarVariants = {
-    hidden: { scale: 0, rotate: -30 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
+      opacity: 1,
       scale: 1,
-      rotate: 0,
       transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20
+        duration: 0.3
       }
     },
     hover: {
-      scale: 1.1,
+      scale: 1.05,
       transition: {
-        duration: 0.3
+        duration: 0.2
       }
     }
   };
@@ -49,9 +44,9 @@ const TeamSection = () => {
       <div className="container mx-auto max-w-6xl">
         <motion.h2 
           className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
           Our Team
@@ -62,7 +57,7 @@ const TeamSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {[
             "Punit Mehta",
@@ -75,7 +70,7 @@ const TeamSection = () => {
               key={index} 
               className="text-center"
               variants={memberVariants}
-              whileHover={{ y: -5 }}
+              whileHover={{ translateY: -2 }}
             >
               <motion.div 
                 className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-[var(--color-light)] mx-auto mb-3 sm:mb-4 flex items-center justify-center"

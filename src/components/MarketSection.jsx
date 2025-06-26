@@ -7,21 +7,17 @@ const MarketSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
+        staggerChildren: 0.08
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15
+        duration: 0.5
       }
     }
   };
@@ -31,9 +27,9 @@ const MarketSection = () => {
       <div className="container mx-auto max-w-6xl">
         <motion.h2 
           className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
           Market Snapshot
@@ -44,7 +40,7 @@ const MarketSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {[
             "61,400+ recognized startups in India",
@@ -57,10 +53,7 @@ const MarketSection = () => {
               key={index} 
               className="bg-[var(--color-white)] p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-md transition-all"
               variants={itemVariants}
-              whileHover={{ 
-                y: -5, 
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" 
-              }}
+              whileHover={{ translateY: -2 }}
             >
               <p className="text-base sm:text-lg text-[var(--color-dark)]">{stat}</p>
             </motion.div>

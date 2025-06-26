@@ -7,21 +7,17 @@ const ValuePropositionSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
+        staggerChildren: 0.08
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      x: 0,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15
+        duration: 0.5
       }
     }
   };
@@ -31,9 +27,9 @@ const ValuePropositionSection = () => {
       <div className="container mx-auto max-w-6xl">
         <motion.h2 
           className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
           Value Proposition
@@ -44,7 +40,7 @@ const ValuePropositionSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {[
             {
@@ -72,10 +68,7 @@ const ValuePropositionSection = () => {
               key={index} 
               className="bg-[var(--color-light)] p-5 sm:p-6 rounded-xl border-l-4 border-[var(--color-accent)] hover:shadow-md transition-all"
               variants={itemVariants}
-              whileHover={{ 
-                x: 5, 
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" 
-              }}
+              whileHover={{ translateX: 2 }}
             >
               <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-[var(--color-dark)]">{value.title}</h3>
               <p className="text-sm sm:text-base text-[var(--color-gray)]">{value.description}</p>

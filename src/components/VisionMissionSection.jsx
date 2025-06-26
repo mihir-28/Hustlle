@@ -2,19 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const VisionMissionSection = () => {
-  const cardVariants = {
-    offscreen: {
-      y: 50,
-      opacity: 0
-    },
-    onscreen: {
-      y: 0,
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
-      transition: {
-        type: "spring",
-        bounce: 0.4,
-        duration: 0.8
-      }
+      transition: { duration: 0.7 }
     }
   };
 
@@ -23,9 +15,9 @@ const VisionMissionSection = () => {
       <div className="container mx-auto max-w-6xl">
         <motion.h2 
           className="text-3xl sm:text-4xl font-bold mb-12 sm:mb-16 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
           Vision & Mission
@@ -33,10 +25,10 @@ const VisionMissionSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <motion.div 
             className="bg-[var(--color-light)] p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeIn}
           >
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[var(--color-accent)]">Vision</h3>
             <p className="text-base sm:text-lg text-[var(--color-dark)] leading-relaxed">
@@ -45,11 +37,11 @@ const VisionMissionSection = () => {
           </motion.div>
           <motion.div 
             className="bg-[var(--color-light)] p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={cardVariants}
-            transition={{ delay: 0.2 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeIn}
+            transition={{ delay: 0.1 }}
           >
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[var(--color-accent)]">Mission</h3>
             <p className="text-base sm:text-lg text-[var(--color-dark)] leading-relaxed">

@@ -3,25 +3,22 @@ import { motion } from 'framer-motion';
 
 const PositioningSection = () => {
   const quoteVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut"
+        duration: 0.7
       }
     }
   };
 
   const tagVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: index => ({
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.5,
-        delay: 0.3 + (index * 0.1)
+        duration: 0.4,
+        delay: 0.2 + (index * 0.08)
       }
     })
   };
@@ -33,7 +30,7 @@ const PositioningSection = () => {
           className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[var(--color-white)] max-w-4xl mx-auto leading-tight"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={quoteVariants}
         >
           "AI-powered co-pilot for Indian founders to plan, fund, and grow their startups – faster and smarter."
@@ -43,8 +40,8 @@ const PositioningSection = () => {
           className="text-lg sm:text-xl font-bold mb-6 sm:mb-8 text-[var(--color-white)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           Key differentiators:
         </motion.h3>
@@ -62,12 +59,9 @@ const PositioningSection = () => {
               custom={index}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
               variants={tagVariants}
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)" 
-              }}
+              whileHover={{ scale: 1.02 }}
             >
               <span className="font-bold text-sm sm:text-base text-[var(--color-dark)]">{item}</span>
             </motion.div>
