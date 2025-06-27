@@ -14,7 +14,7 @@ import ScrollToTop from '../components/ScrollToTop';
 
 const HomePage = () => {
   return (
-    <div className="theme-transition min-h-screen">
+    <div className="theme-transition min-h-screen overflow-x-hidden">
       <ThemeToggle />
       <ScrollToTop />
       

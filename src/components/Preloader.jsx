@@ -98,7 +98,7 @@ const Preloader = ({ onLoadComplete }) => {
   
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--color-light)] overflow-hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-light)] overflow-hidden"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
@@ -140,10 +140,11 @@ const Preloader = ({ onLoadComplete }) => {
       {/* Grid pattern for tech feel */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
-      <div className="relative z-10 text-center">
+      {/* Centered content container */}
+      <div className="flex flex-col items-center justify-center w-full max-w-xs mx-auto px-4 text-center">
         {/* Logo with AI glow effect */}
         <motion.div
-          className="mb-8 relative"
+          className="relative w-full flex justify-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -155,7 +156,7 @@ const Preloader = ({ onLoadComplete }) => {
         </motion.div>
         
         {/* AI-inspired loading indicator */}
-        <div className="relative w-64 h-1 mb-6">
+        <div className="relative w-full h-1 mb-6">
           {/* Base track */}
           <div className="absolute inset-0 bg-[var(--color-light)] rounded-full overflow-hidden border border-[var(--color-gray)] opacity-30"></div>
           
@@ -178,7 +179,7 @@ const Preloader = ({ onLoadComplete }) => {
         </div>
         
         {/* Digital counter */}
-        <div className="relative">
+        <div className="w-full flex flex-col items-center">
           <motion.div
             className="text-sm font-mono tracking-wider"
             initial={{ opacity: 0 }}
