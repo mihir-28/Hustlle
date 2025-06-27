@@ -48,25 +48,25 @@ const ValuePropositionSection = () => {
               description: "Tailored templates and AI insights for Indian industries"
             },
             {
-              title: "Affordable Pricing",
-              description: "Starting at ₹499/month"
-            },
-            {
               title: "Multi-lingual Support",
               description: "Reaching Tier 2/3 founders"
             },
             {
-              title: "Investor Access",
-              description: "50,000+ global angels, VCs, and accelerators"
-            },
-            {
               title: "Cultural Context",
               description: "AI trained on Indian market dynamics"
-            }
+            },
+            // {
+            //   title: "Affordable Pricing",
+            //   description: "Starting at ₹499/month"
+            // },
+            // {
+            //   title: "Investor Access",
+            //   description: "50,000+ global angels, VCs, and accelerators"
+            // }
           ].map((value, index) => (
             <motion.div 
               key={index} 
-              className="bg-[var(--color-light)] p-5 sm:p-6 rounded-xl border-l-4 border-[var(--color-accent)] hover:shadow-md transition-all"
+              className="bg-[var(--color-light)] p-5 sm:p-6 rounded-xl border-l-4 border-[var(--color-secondary)] hover:shadow-md transition-all"
               variants={itemVariants}
               whileHover={{ translateX: 2 }}
             >

@@ -63,7 +63,7 @@ const ProblemSection = () => {
               variants={itemVariants}
               whileHover={{ scale: 1.01 }}
             >
-              <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-[var(--color-accent)] text-[var(--color-white)] flex items-center justify-center flex-shrink-0">
+              <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-[var(--color-tertiary)] text-[var(--color-white)] flex items-center justify-center flex-shrink-0">
                 ✓
               </div>
               <p className="text-base sm:text-lg text-[var(--color-dark)]">{problem}</p>

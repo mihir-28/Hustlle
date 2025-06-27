@@ -24,7 +24,7 @@ const PositioningSection = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 px-4 bg-[var(--color-accent)] theme-transition">
+    <section className="py-16 sm:py-20 px-4 bg-[var(--color-secondary)] theme-transition">
       <div className="container mx-auto max-w-6xl text-center">
         <motion.blockquote 
           className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[var(--color-white)] max-w-4xl mx-auto leading-tight"

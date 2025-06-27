@@ -78,7 +78,7 @@ const TeamSection = () => {
                 whileHover="hover"
               >
                 {/* Placeholder for team member photo */}
-                <span className="text-xl sm:text-2xl text-[var(--color-accent)] font-bold">
+                <span className="text-xl sm:text-2xl text-[var(--color-secondary)] font-bold">
                   {member.split(' ').map(name => name[0]).join('')}
                 </span>
               </motion.div>

@@ -30,7 +30,7 @@ const VisionMissionSection = () => {
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeIn}
           >
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[var(--color-accent)]">Vision</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[var(--color-primary)]">Vision</h3>
             <p className="text-base sm:text-lg text-[var(--color-dark)] leading-relaxed">
               To become India's most trusted AI-powered startup partner, enabling every entrepreneur—from metro cities to rural towns—to build, pitch and scale world-class businesses.
             </p>
@@ -43,7 +43,7 @@ const VisionMissionSection = () => {
             variants={fadeIn}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[var(--color-accent)]">Mission</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[var(--color-primary)]">Mission</h3>
             <p className="text-base sm:text-lg text-[var(--color-dark)] leading-relaxed">
               To simplify entrepreneurship by providing intelligent, affordable, and India-centric tools. Hustlle bridges the gap between ideas and execution by making startup support accessible to all.
             </p>

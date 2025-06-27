@@ -79,7 +79,7 @@ const AudienceSection = () => {
               whileHover={{ translateY: -3 }}
             >
               <motion.div 
-                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--color-accent)] mx-auto mb-3 sm:mb-4 flex items-center justify-center"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[var(--color-tertiary)] mx-auto mb-3 sm:mb-4 flex items-center justify-center"
                 variants={iconVariants}
               >
                 <span className="text-xl sm:text-2xl text-[var(--color-white)] font-bold">

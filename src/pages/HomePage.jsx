@@ -5,9 +5,9 @@ import ProblemSection from '../components/ProblemSection';
 import SolutionSection from '../components/SolutionSection';
 import AudienceSection from '../components/AudienceSection';
 import PositioningSection from '../components/PositioningSection';
-import MarketSection from '../components/MarketSection';
+// import MarketSection from '../components/MarketSection';
 import ValuePropositionSection from '../components/ValuePropositionSection';
-import TeamSection from '../components/TeamSection';
+// import TeamSection from '../components/TeamSection';
 import ContactSection from '../components/ContactSection';
 import ThemeToggle from '../components/ThemeToggle';
 import ScrollToTop from '../components/ScrollToTop';
@@ -18,16 +18,17 @@ const HomePage = () => {
       <ThemeToggle />
       <ScrollToTop />
       
-      <div className="space-y-0">
-        <HeroSection />
+      <HeroSection />
+      
+      <div className="space-y-16 md:space-y-24 pt-16">
         <VisionMissionSection />
         <ProblemSection />
         <SolutionSection />
         <AudienceSection />
         <PositioningSection />
-        <MarketSection />
+        {/* <MarketSection /> */}
         <ValuePropositionSection />
-        <TeamSection />
+        {/* <TeamSection /> */}
         <ContactSection />
       </div>
     </div>
