@@ -103,39 +103,6 @@ const Preloader = ({ onLoadComplete }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* AI-inspired animated background elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full">
-          {particles.map((_, index) => (
-            <motion.div
-              key={index}
-              className="absolute rounded-full bg-[var(--color-primary)]"
-              initial={{
-                x: `${Math.random() * 100}%`,
-                y: `${Math.random() * 100}%`,
-                opacity: 0.3 + Math.random() * 0.5,
-                scale: 0.1 + Math.random() * 0.3,
-              }}
-              animate={{
-                x: `${Math.random() * 100}%`,
-                y: `${Math.random() * 100}%`,
-                opacity: 0.3 + Math.random() * 0.5,
-                scale: 0.1 + Math.random() * 0.3,
-              }}
-              transition={{
-                duration: 3 + Math.random() * 5,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-              style={{
-                width: `${10 + Math.random() * 20}px`,
-                height: `${10 + Math.random() * 20}px`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
 
       {/* Grid pattern for tech feel */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
