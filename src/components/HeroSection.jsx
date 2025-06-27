@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useImageContext } from '../context/ImageContext';
 
 const HeroSection = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const { preloadedImages } = useImageContext();
   
   // Check if dark mode is active
   useEffect(() => {
@@ -99,6 +101,9 @@ const HeroSection = () => {
     }
   };
 
+  // Get the appropriate background image based on theme
+  const backgroundImage = isDarkMode ? '/Gradients/grad3.png' : '/Gradients/grad12.png';
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background gradient image with animation */}
@@ -109,7 +114,7 @@ const HeroSection = () => {
         variants={backgroundVariants}
       >
         <img 
-          src={isDarkMode ? "/Gradients/grad3.png" : "/Gradients/grad12.png"}
+          src={backgroundImage}
           alt="Background Gradient" 
           className="w-full h-full object-cover"
         />
