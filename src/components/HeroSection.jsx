@@ -1,44 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useImageContext } from '../context/ImageContext';
+import { useThemeContext } from '../context/ThemeContext';
 
 const HeroSection = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode } = useThemeContext();
   const { preloadedImages } = useImageContext();
-  
-  // Check if dark mode is active
+  const darkImageRef = useRef(null);
+  const lightImageRef = useRef(null);
+
+  // Preload both theme images on component mount
   useEffect(() => {
-    // Initial check
-    const checkTheme = () => {
-      const htmlElement = document.documentElement;
-      const isDark = htmlElement.getAttribute('data-theme') === 'dark' || 
-        (window.matchMedia('(prefers-color-scheme: dark)').matches && 
-         !htmlElement.hasAttribute('data-theme'));
-      setIsDarkMode(isDark);
-    };
-    
-    checkTheme();
-    
-    // Set up observer for theme changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-          checkTheme();
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-    
-    // Listen to system preference changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => checkTheme();
-    mediaQuery.addEventListener('change', handleChange);
-    
-    return () => {
-      observer.disconnect();
-      mediaQuery.removeEventListener('change', handleChange);
-    };
+    // Preload dark theme image
+    const darkImg = new Image();
+    darkImg.src = '/Gradients/grad3.png';
+    darkImageRef.current = darkImg;
+
+    // Preload light theme image
+    const lightImg = new Image();
+    lightImg.src = '/Gradients/grad12.png';
+    lightImageRef.current = lightImg;
   }, []);
 
   // Staggered container animation
@@ -101,25 +82,41 @@ const HeroSection = () => {
     }
   };
 
-  // Get the appropriate background image based on theme
-  const backgroundImage = isDarkMode ? '/Gradients/grad3.png' : '/Gradients/grad12.png';
+  // Get the appropriate background images
+  const darkModeImage = '/Gradients/grad3.png';
+  const lightModeImage = '/Gradients/grad12.png';
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background gradient image with animation */}
-      <motion.div 
-        className="absolute inset-0 w-full h-full"
-        initial="hidden"
-        animate="visible"
-        variants={backgroundVariants}
-      >
-        <img 
-          src={backgroundImage}
-          alt="Background Gradient" 
-          className="w-full h-full object-cover"
-        />
+      <div className="absolute inset-0 w-full h-full">
+        {/* Always render both images but control visibility with opacity */}
+        <div 
+          className="absolute inset-0 w-full h-full transition-opacity duration-700"
+          style={{ opacity: isDarkMode ? 1 : 0 }}
+        >
+          <img 
+            src={darkModeImage}
+            alt="Dark Background Gradient" 
+            className="w-full h-full object-cover"
+            style={{ visibility: isDarkMode ? 'visible' : 'hidden' }}
+          />
+        </div>
+        
+        <div 
+          className="absolute inset-0 w-full h-full transition-opacity duration-700"
+          style={{ opacity: isDarkMode ? 0 : 1 }}
+        >
+          <img 
+            src={lightModeImage}
+            alt="Light Background Gradient" 
+            className="w-full h-full object-cover"
+            style={{ visibility: isDarkMode ? 'hidden' : 'visible' }}
+          />
+        </div>
+        
         <div className="absolute inset-0 bg-opacity-30 backdrop-blur-[2px]"></div>
-      </motion.div>
+      </div>
       
       {/* Content container */}
       <div className="container mx-auto max-w-4xl px-4 relative z-10">

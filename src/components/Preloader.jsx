@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useImageContext } from '../context/ImageContext';
 
-// List of images to preload
+// List of images to preload - include both theme images
 const imagesToPreload = [
-  '/Gradients/grad3.png',
-  '/Gradients/grad12.png',
+  '/Gradients/grad3.png',  // Dark theme image
+  '/Gradients/grad12.png', // Light theme image
 ];
 
 // Minimum time to display the preloader (in milliseconds)
@@ -57,23 +57,55 @@ const Preloader = ({ onLoadComplete }) => {
     const totalImages = imagesToPreload.length;
     const loadedImages = {};
     
-    // Function to preload a single image
+    // Function to preload a single image with high priority
     const preloadImage = (src) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
-        img.src = src;
+        
+        // Set high fetch priority for critical images
+        img.fetchPriority = "high";
+        img.loading = "eager";
+        
         img.onload = () => {
           loadedCount++;
           loadedImages[src] = src; // Store the loaded image URL
           resolve();
         };
         img.onerror = reject;
+        
+        // Start loading the image
+        img.src = src;
       });
     };
+    
+    // Create background image elements in the DOM but hidden
+    // This ensures they're in the browser cache
+    const preloadInDom = (src) => {
+      const imgElement = document.createElement('img');
+      imgElement.src = src;
+      imgElement.style.position = 'absolute';
+      imgElement.style.width = '1px';
+      imgElement.style.height = '1px';
+      imgElement.style.opacity = '0';
+      imgElement.style.pointerEvents = 'none';
+      document.body.appendChild(imgElement);
+      
+      // Return a function to remove the element later
+      return () => document.body.removeChild(imgElement);
+    };
+    
+    // Create cleanup functions array
+    const cleanupFunctions = [];
     
     // Preload all images
     const preloadAllImages = async () => {
       try {
+        // Add images to DOM for immediate caching
+        imagesToPreload.forEach(src => {
+          cleanupFunctions.push(preloadInDom(src));
+        });
+        
+        // Load images with promises
         await Promise.all(imagesToPreload.map(src => preloadImage(src)));
         
         // Register all preloaded images with the context
@@ -91,6 +123,11 @@ const Preloader = ({ onLoadComplete }) => {
     };
     
     preloadAllImages();
+    
+    // Cleanup function to remove the hidden images
+    return () => {
+      cleanupFunctions.forEach(cleanup => cleanup());
+    };
   }, [registerImages]);
 
   // Particles animation for AI tech feel
@@ -103,7 +140,6 @@ const Preloader = ({ onLoadComplete }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-
       {/* Grid pattern for tech feel */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       

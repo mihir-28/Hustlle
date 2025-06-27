@@ -8,6 +8,10 @@
     --color-primary: #013cf1;
     --color-secondary: #a8c0ff;
     --color-tertiary: #49f0fd;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-duration: 700ms;
+    --bg-light: url('/Gradients/grad12.png');
+    --bg-dark: url('/Gradients/grad3.png');
 }
 
 :root[data-theme="dark"] {
@@ -32,11 +36,62 @@
     }
 }
 
+/* Apply smooth transitions to the entire document */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+/* Enhanced transitions for the entire body */
 body {
     font-family: "SF Pro Display", sans-serif;
     color: var(--color-dark);
     background-color: var(--color-light);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: color var(--transition-duration) var(--transition-timing),
+                background-color var(--transition-duration) var(--transition-timing);
+}
+
+/* Apply transitions to all elements that use theme variables */
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow, outline-color;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing);
+}
+
+/* Exclude transitions from specific elements where it might cause issues */
+.no-transition,
+.no-transition * {
+    transition: none !important;
+}
+
+/* Background image related styles */
+.bg-image-container {
+    position: relative;
+    background-color: var(--color-light); /* Fallback color */
+}
+
+.bg-image-dark {
+    background-image: var(--bg-dark);
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-image-light {
+    background-image: var(--bg-light);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.no-fouc {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fouc-ready {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
 }
 
 h1,
@@ -63,10 +118,6 @@ h6 {
 }
 
 /* Base responsive styles */
-html {
-    font-size: 16px;
-}
-
 @media (max-width: 768px) {
     html {
         font-size: 15px;
@@ -77,11 +128,6 @@ html {
     html {
         font-size: 14px;
     }
-}
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
 }
 
 /* Transition classes for animations */
@@ -99,9 +145,31 @@ html {
     }
 }
 
+/* Enhanced theme transition class */
 .theme-transition {
-    transition: background-color 0.3s ease, color 0.3s ease,
-        border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color var(--transition-duration) var(--transition-timing),
+                color var(--transition-duration) var(--transition-timing),
+                border-color var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing),
+                transform var(--transition-duration) var(--transition-timing);
+}
+
+/* Theme transition overlay for page-wide animation */
+.theme-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    background: var(--color-primary);
+    transition: opacity var(--transition-duration) var(--transition-timing);
+}
+
+.theme-transition-overlay.active {
+    opacity: 0.05;
 }
 
 /* AI-themed patterns and backgrounds */
@@ -109,10 +177,12 @@ html {
     background-image: linear-gradient(to right, var(--color-dark) 1px, transparent 1px),
                      linear-gradient(to bottom, var(--color-dark) 1px, transparent 1px);
     background-size: 20px 20px;
+    transition: background-image var(--transition-duration) var(--transition-timing);
 }
 
 .bg-gradient-radial {
     background: radial-gradient(circle at center, var(--color-white) 0%, var(--color-light) 100%);
+    transition: background var(--transition-duration) var(--transition-timing);
 }
 
 /* Subtle hover effects */
@@ -131,6 +201,7 @@ html {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: background var(--transition-duration) var(--transition-timing);
 }
 
 /* Gradient borders */
@@ -151,6 +222,7 @@ html {
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+    transition: background var(--transition-duration) var(--transition-timing);
 }
 
 /* Animated background */
@@ -172,6 +244,8 @@ html {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background var(--transition-duration) var(--transition-timing),
+                border var(--transition-duration) var(--transition-timing);
 }
 
 .dark .glass-effect {

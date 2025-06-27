@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import Header from './ui/Header'
 import Preloader from './components/Preloader'
 import { ImageProvider } from './context/ImageContext'
+import ThemeProvider from './context/ThemeContext'
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,22 +31,24 @@ function App() {
   };
 
   return (
-    <ImageProvider>
-      <div className="min-h-screen bg-[var(--color-light)]">
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <Preloader key="preloader" onLoadComplete={handleLoadComplete} />
-          ) : (
-            <>
-              <Header />
-              <main>
-                <HomePage />
-              </main>
-            </>
-          )}
-        </AnimatePresence>
-      </div>
-    </ImageProvider>
+    <ThemeProvider>
+      <ImageProvider>
+        <div className="min-h-screen bg-[var(--color-light)]">
+          <AnimatePresence mode="wait">
+            {isLoading ? (
+              <Preloader key="preloader" onLoadComplete={handleLoadComplete} />
+            ) : (
+              <>
+                <Header />
+                <main>
+                  <HomePage />
+                </main>
+              </>
+            )}
+          </AnimatePresence>
+        </div>
+      </ImageProvider>
+    </ThemeProvider>
   )
 }
 
