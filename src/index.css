@@ -103,3 +103,78 @@ html {
     transition: background-color 0.3s ease, color 0.3s ease,
         border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* AI-themed patterns and backgrounds */
+.bg-grid-pattern {
+    background-image: linear-gradient(to right, var(--color-dark) 1px, transparent 1px),
+                     linear-gradient(to bottom, var(--color-dark) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--color-white) 0%, var(--color-light) 100%);
+}
+
+/* Subtle hover effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient text effect */
+.text-gradient {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Gradient borders */
+.gradient-border {
+    position: relative;
+    border-radius: 0.5rem;
+    padding: 1px;
+}
+
+.gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    padding: 1px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Animated background */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary), var(--color-secondary));
+    background-size: 200% 200%;
+    animation: gradientAnimation 6s ease infinite;
+}
+
+/* Glassmorphism effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-effect {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}

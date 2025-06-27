@@ -2,88 +2,112 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const SolutionSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08
-      }
+  const solutions = [
+    {
+      title: "Business Plan & Pitch Deck Generation",
+      description: "Structured documents with industry-aligned templates",
+      icon: "📊"
+    },
+    {
+      title: "Financial Modelling & Forecasting",
+      description: "Dashboards and scenario analysis tools",
+      icon: "📈"
+    },
+    {
+      title: "Investor Connect",
+      description: "Smart matchmaking and outreach tools",
+      icon: "🔗"
+    },
+    {
+      title: "Professional Guidance & Services",
+      description: "Verified expert access through integrated networks",
+      icon: "👥"
+    },
+    {
+      title: "Unified Dashboard",
+      description: "Real-time analytics, investor tracking, and document access—all in one place",
+      icon: "📱"
     }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
+  ];
 
   return (
-    <section className="py-16 sm:py-20 px-4 bg-[var(--color-white)] theme-transition">
-      <div className="container mx-auto max-w-6xl">
-        <motion.h2 
-          className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          Our Solution
-        </motion.h2>
-        <motion.p 
-          className="text-base sm:text-xl mb-8 sm:mb-12 text-center text-[var(--color-gray)] max-w-3xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          A fully integrated AI-powered platform that offers:
-        </motion.p>
+    <section className="py-24 px-4 bg-[var(--color-white)] theme-transition relative overflow-hidden">
+      {/* Abstract tech pattern */}
+      <div className="absolute right-0 top-0 w-full h-full overflow-hidden opacity-[0.02] pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+      
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="max-w-xl mx-auto mb-20 text-center">
+          <motion.div 
+            className="inline-flex items-center space-x-2 mb-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="h-[1px] w-5 bg-[var(--color-primary)]"></div>
+            <span className="text-sm uppercase tracking-[0.2em] font-medium text-[var(--color-primary)]">Our Approach</span>
+            <div className="h-[1px] w-5 bg-[var(--color-primary)]"></div>
+          </motion.div>
+          
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-6 text-[var(--color-dark)]"
+            initial={{ opacity: 0, translateY: 20 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Our Solution
+          </motion.h2>
+          
+          <motion.p 
+            className="text-lg text-[var(--color-gray)] leading-relaxed font-light"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            A fully integrated AI-powered platform that offers:
+          </motion.p>
+        </div>
         
-        <motion.div 
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {[
-            {
-              title: "Business Plan & Pitch Deck Generation",
-              description: "Structured documents with industry-aligned templates"
-            },
-            {
-              title: "Financial Modelling & Forecasting",
-              description: "Dashboards and scenario analysis tools"
-            },
-            {
-              title: "Investor Connect",
-              description: "Smart matchmaking and outreach tools"
-            },
-            {
-              title: "Professional Guidance & Services",
-              description: "Verified expert access through integrated networks"
-            },
-            {
-              title: "Unified Dashboard",
-              description: "Real-time analytics, investor tracking, and document access—all in one place"
-            }
-          ].map((solution, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          {solutions.map((solution, index) => (
             <motion.div 
-              key={index} 
-              className="bg-[var(--color-light)] p-6 sm:p-8 rounded-xl hover:shadow-md transition-all"
-              variants={itemVariants}
-              whileHover={{ translateY: -3, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.08)" }}
+              key={index}
+              className="relative"
+              initial={{ opacity: 0, translateY: 20 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
             >
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[var(--color-dark)]">{solution.title}</h3>
-              <p className="text-[var(--color-gray)]">{solution.description}</p>
+              <div className="bg-[var(--color-light)] rounded-lg p-8 h-full hover:translate-y-[-4px] transition-all duration-300 group">
+                <div className="mb-6 relative">
+                  <div className="absolute -top-2 -left-2 w-12 h-12 bg-[var(--color-white)] rounded-md flex items-center justify-center text-2xl">
+                    {solution.icon}
+                  </div>
+                  <div className="w-16 h-[1px] bg-gradient-to-r from-[var(--color-primary)] to-transparent absolute -bottom-3 left-0 group-hover:w-24 transition-all duration-300"></div>
+                </div>
+                
+                <h3 className="text-xl font-bold mb-3 text-[var(--color-dark)] mt-6 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+                  {solution.title}
+                </h3>
+                
+                <p className="text-[var(--color-gray)]">
+                  {solution.description}
+                </p>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
