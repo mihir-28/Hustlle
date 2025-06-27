@@ -196,7 +196,7 @@ const Preloader = ({ onLoadComplete }) => {
             animate={{ opacity: 0.7 }}
             transition={{ delay: 0.5 }}
           >
-            Initializing AI Interface
+            Powering Entrepreneurial Success
           </motion.div>
         </div>
       </div>
