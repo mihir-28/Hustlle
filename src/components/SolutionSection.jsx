@@ -5,28 +5,23 @@ const SolutionSection = () => {
   const solutions = [
     {
       title: "Business Plan & Pitch Deck Generation",
-      description: "Structured documents with industry-aligned templates",
-      icon: "📊"
+      description: "Structured documents with industry-aligned templates"
     },
     {
       title: "Financial Modelling & Forecasting",
-      description: "Dashboards and scenario analysis tools",
-      icon: "📈"
-    },
-    {
-      title: "Investor Connect",
-      description: "Smart matchmaking and outreach tools",
-      icon: "🔗"
+      description: "Dashboards and scenario analysis tools"
     },
     {
       title: "Professional Guidance & Services",
-      description: "Verified expert access through integrated networks",
-      icon: "👥"
+      description: "Verified expert access through integrated networks"
+    },
+    {
+      title: "Investor Connect",
+      description: "Smart matchmaking and outreach tools"
     },
     {
       title: "Unified Dashboard",
-      description: "Real-time analytics, investor tracking, and document access—all in one place",
-      icon: "📱"
+      description: "Real-time analytics, investor tracking, and document access—all in one place"
     }
   ];
 
@@ -79,27 +74,23 @@ const SolutionSection = () => {
           </motion.p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="flex flex-wrap justify-center gap-8">
           {solutions.map((solution, index) => (
             <motion.div 
               key={index}
-              className="relative"
+              className="w-full sm:w-[calc(100%-2rem)] md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)] max-w-md"
               initial={{ opacity: 0, translateY: 20 }}
               whileInView={{ opacity: 1, translateY: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
             >
-              <div className="bg-[var(--color-light)] rounded-lg p-8 h-full hover:translate-y-[-4px] transition-all duration-300 group">
-                <div className="mb-6 relative">
-                  <div className="absolute -top-2 -left-2 w-12 h-12 bg-[var(--color-white)] rounded-md flex items-center justify-center text-2xl">
-                    {solution.icon}
-                  </div>
-                  <div className="w-16 h-[1px] bg-gradient-to-r from-[var(--color-primary)] to-transparent absolute -bottom-3 left-0 group-hover:w-24 transition-all duration-300"></div>
+              <div className="bg-[var(--color-light)] rounded-lg p-8 h-full hover:translate-y-[-4px] transition-all duration-300 group w-full flex flex-col">
+                <div className="h-[70px] mb-4">
+                  <h3 className="text-xl font-bold text-[var(--color-dark)] group-hover:text-[var(--color-primary)] transition-colors duration-300 relative">
+                    {solution.title}
+                    <div className="w-16 h-[1px] bg-gradient-to-r from-[var(--color-primary)] to-transparent absolute bottom-[-8px] left-0 group-hover:w-24 transition-all duration-300"></div>
+                  </h3>
                 </div>
-                
-                <h3 className="text-xl font-bold mb-3 text-[var(--color-dark)] mt-6 group-hover:text-[var(--color-primary)] transition-colors duration-300">
-                  {solution.title}
-                </h3>
                 
                 <p className="text-[var(--color-gray)]">
                   {solution.description}

@@ -128,7 +128,7 @@ const ContactSection = () => {
             <p className="text-sm text-[var(--color-gray)]">© 2025 Hustlle. All Rights Reserved.</p>
             
             {/* Social Media Icons */}
-            <div className="flex justify-center gap-4 mt-4">
+            {/* <div className="flex justify-center gap-4 mt-4">
               {socialLinks.map((link, index) => (
                 <motion.a 
                   key={index}
@@ -144,7 +144,7 @@ const ContactSection = () => {
                   {link.icon}
                 </motion.a>
               ))}
-            </div>
+            </div> */}
           </motion.div>
           
           {/* Quick Links */}

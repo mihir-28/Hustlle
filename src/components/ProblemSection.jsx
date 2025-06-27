@@ -65,7 +65,7 @@ const ProblemSection = () => {
             {problems.map((problem, index) => (
               <motion.div 
                 key={index}
-                className="bg-[var(--color-white)] p-6 md:p-8 rounded-lg border-l-2 border-[var(--color-tertiary)] hover:border-l-4 transition-all"
+                className="bg-[var(--color-white)] p-6 md:p-8 rounded-lg transition-all"
                 initial={{ opacity: 0, translateY: 20 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 viewport={{ once: true }}
